@@ -1,6 +1,6 @@
 Work in progress. Aiming for a command api such as this...
 
-$ ./cyber-dojo create-collection refactoring=https://github.com/JonJagger/cyber-dojo--refactoring-exercises.git
+$ ./cyber-dojo create-collection refactoring=https://github.com/JonJagger/cyber-dojo-refactoring-exercises.git
 
 $ ./cyber-dojo up exercises=refactoring
 
