@@ -1,6 +1,6 @@
 Work in progress. Aiming for a command api such as this...
 
-$ ./cyber-dojo volume create --name=refactoring --git=https://github.com/JonJagger/cyber-dojo-refactoring-exercises.git
+$ ./cyber-dojo volume create --name=refactoring --git=https://github.com/cyber-dojo/default-exercises.git
 
 $ ./cyber-dojo up --exercises=refactoring
 
