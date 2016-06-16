@@ -8,5 +8,5 @@ $ ./cyber-dojo volume create --name=refactoring --git=https://github.com/cyber-d
 
 $ ./cyber-dojo up --exercises=refactoring
 
-from a cyber-dojo server which will pull the repo and put it into a docker 
+from a cyber-dojo server which will pull the repo and put it into a docker
 volume named refactoring which will then used as the source of exercises in the setup page.
