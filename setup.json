@@ -1,4 +1,5 @@
 {
-  "type": "exercises"
+  "type": "exercises",
+  "lhs_column_name": "refactoring"
 }
 
