@@ -2,11 +2,10 @@
 
 <img src="https://raw.githubusercontent.com/cyber-dojo/web/master/public/images/home_page_logo.png" alt="cyber-dojo yin/yang logo" width="50px" height="50px"/>
 
-Work in progress. Aiming for a command api such as this...
+Default repo for [cyber-dojo's](https://github.com/cyber-dojo/web) [setup a custom practice] choices.
 
-$ ./cyber-dojo volume create --name=refactoring --git=https://github.com/cyber-dojo/default-exercises.git
+You can specify an alternate git repo as follows:
 
-$ ./cyber-dojo up --exercises=refactoring
+$ ./cyber-dojo volume create --name=seb --git=https://github.com/cyber-dojo/default-exercises.git
 
-from a cyber-dojo server which will pull the repo and put it into a docker
-volume named refactoring which will then used as the source of exercises in the setup page.
+$ ./cyber-dojo up --exercises=seb
