@@ -2,12 +2,13 @@
 
 <img src="https://raw.githubusercontent.com/cyber-dojo/web/master/public/images/home_page_logo.png" alt="cyber-dojo yin/yang logo" width="50px" height="50px"/>
 
-The default git repo for [cyber-dojo's](https://github.com/cyber-dojo/web) [setup a custom practice session] choices.
+The start-points repo for [cyber-dojo's](https://github.com/cyber-dojo/web)
+[setup a new practice session from a custom start point] choices.
 
 You can specify an alternative git repo as follows:
 
 ```
 ./cyber-dojo volume create --help
 ./cyber-dojo volume create --name=seb --git=https://github.com/cyber-dojo/default-exercises.git
-./cyber-dojo up --exercises=seb
+./cyber-dojo up --custom=seb
 ```
