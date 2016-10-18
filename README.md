@@ -5,10 +5,11 @@
 The git repo for [cyber-dojo's](https://github.com/cyber-dojo/web)
 [setup a new practice session from a <em>custom</em> start point] choices.
 
-You can specify an alternative git repo as follows:
+You can specify and use an alternative custom start-point.
+Assuming https://github.com/seb/start-points-custom.git has the correct format:
 
 ```
-$ ./cyber-dojo start-point create --help
-$ ./cyber-dojo start-point create seb --git=https://github.com/cyber-dojo/start-points-custom.git
-$ ./cyber-dojo up --custom=seb
+$ sudo ./cyber-dojo start-point create --help
+$ sudo ./cyber-dojo start-point create seb --git=https://github.com/seb/start-points-custom.git
+$ sudo ./cyber-dojo up --custom=seb
 ```
