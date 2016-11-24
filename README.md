@@ -17,5 +17,3 @@ $ ./cyber-dojo start-point create --help
 $ ./cyber-dojo start-point create seb --git=https://github.com/seb/start-points-custom.git
 $ ./cyber-dojo up --custom=seb
 ```
-
-On Linux the ./cyber-dojo commands needs to be sudo'd.
