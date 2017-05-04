@@ -1,3 +1,4 @@
+rm -f *.class
 javac CountDown.java
 if [ $? != 0 ]; then 
   echo 
