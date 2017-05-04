@@ -7,5 +7,5 @@ if [ $? != 0 ]; then
   exit
 fi
 
-javac Scorer.java
-java Scorer Countdown.java
+javac Tokens.java Scorer.java
+java -cp . Scorer CountDown.java

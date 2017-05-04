@@ -1,26 +1,26 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Scorer {
 
-    static int lineSize(String line) {
+    int lineSize(String line) {
         char[] chars = line.toCharArray();
         int size = 0;
         for (int i = 0; i < chars.length; i++) {
-            if (!isSpace(chars[i]));
-                size++;
+            if (!isSpace(chars[i])) ;
+            size++;
         }
         return size;
     }
 
-    private static boolean isSpace(char aChar) {
-        return aChar == ' ';
+    boolean isSpace(char aChar) {
+        return String.valueOf(aChar).trim().isEmpty();
     }
 
-    static int linesSize(List<String> lines) {
+    int linesSize(List<String> lines) {
         int size = 0;
         for (String line : lines) {
             size += lineSize(line);
@@ -29,7 +29,7 @@ public class Scorer {
     }
 
 
-    static String hr(int width) {
+    String hr(int width) {
         StringBuffer buf = new StringBuffer();
 
         buf.append("-----|");
@@ -40,7 +40,7 @@ public class Scorer {
         return buf.toString();
     }
 
-    static void printProgramSize(List<String> lines) {
+    void printProgramSize(List<String> lines) {
 
 
         int totalSize = 0;
@@ -50,7 +50,7 @@ public class Scorer {
         for (String line : lines) {
 
             int size = lineSize(line);
-            System.out.println("   " +  size + "  |" + line);
+            System.out.println("   " + size + "  |" + line);
             totalSize += size;
         }
 
@@ -63,11 +63,11 @@ public class Scorer {
 
 // - - - - - - - - - - - - - - - - - - - -
 
-    static List<String> readLines(String filename) {
+    List<String> readLines(String filename) {
         List<String> lines = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename)));
             String sCurrentLine;
             while ((sCurrentLine = reader.readLine()) != null) {
                 lines.add(sCurrentLine);
@@ -81,7 +81,7 @@ public class Scorer {
 
 // - - - - - - - - - - - - - - - - - - - -
 
-    static boolean uses(List<String> lines, String token) {
+    boolean uses(List<String> lines, String token) {
         // ... also matches .
         // double also matches do
         // etc etc
@@ -95,10 +95,10 @@ public class Scorer {
         return false;
     }
 
-    static int tokensSize(List<String> lines) {
+    int tokensSize(List<String> lines) {
         int size = 0;
         for (String token : Tokens.tokens) {
-            if(uses(lines, token)) {
+            if (uses(lines, token)) {
                 size += token.length();
             }
         }
@@ -106,7 +106,7 @@ public class Scorer {
         return size;
     }
 
-    static boolean missingTokens(List<String> lines) {
+    boolean missingTokens(List<String> lines) {
         List<String> unused = new ArrayList<>();
         for (String token : Tokens.tokens) {
             if (!uses(lines, token)) {
@@ -119,7 +119,7 @@ public class Scorer {
 
 // - - - - - - - - - - - - - - - - - - - -
 
-    static void printTokenBonuses(List<String> lines) {
+    void printTokenBonuses(List<String> lines) {
         int tokensSize = 0;
         System.out.println(hr(20));
 
@@ -147,9 +147,8 @@ public class Scorer {
 
 // - - - - - - - - - - - - - - - - - - - -
 
-    public static void main(String[] args) {
-
-        List<String> lines = readLines(args[1]);
+    public void score(String filename) {
+        List<String> lines = readLines(filename);
         int program_size = linesSize(lines);
         int used_token_bonus = tokensSize(lines);
         int completion_bonus = missingTokens(lines) ? 0 : 50;
@@ -167,6 +166,10 @@ public class Scorer {
         for (int i = 0; i < 100; i++)
             System.out.println();
         System.out.println("All tests passed");
+    }
+
+    public static void main(String[] args) {
+        new Scorer().score(args[0]);
     }
 
 }
