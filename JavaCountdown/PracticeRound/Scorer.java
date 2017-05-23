@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Scorer {
     String hr(int width) {
         StringBuffer buf = new StringBuffer();
 
-        buf.append("-----|");
+        buf.append("------|");
         for (int i = 0; i < width; i++) {
             buf.append("-");
         }
@@ -40,25 +41,22 @@ public class Scorer {
         return buf.toString();
     }
 
-    void printProgramSize(List<String> lines) {
-
+    void printProgramSize(List<String> lines, PrintStream out) {
 
         int totalSize = 0;
 
-        System.out.println(hr(60));
+        out.println(hr(60));
 
         for (String line : lines) {
-
             int size = lineSize(line);
-            System.out.println("   " + size + "  |" + line);
+
+            out.printf(" %3d  |%s\n", size, line);
             totalSize += size;
         }
 
-        System.out.println(hr(60));
+        out.println(hr(60));
 
-        System.out.println("   " + totalSize + " == CountDown.java.size");
-
-        System.out.println("");
+        out.println("   " + totalSize + " == CountDown.java.size");
     }
 
 // - - - - - - - - - - - - - - - - - - - -
@@ -107,7 +105,6 @@ public class Scorer {
     }
 
     boolean missingTokens(List<String> lines) {
-        List<String> unused = new ArrayList<>();
         for (String token : Tokens.tokens) {
             if (!uses(lines, token)) {
                 return true;
@@ -119,57 +116,60 @@ public class Scorer {
 
 // - - - - - - - - - - - - - - - - - - - -
 
-    void printTokenBonuses(List<String> lines) {
+    void printTokenBonuses(List<String> lines, PrintStream out) {
         int tokensSize = 0;
-        System.out.println(hr(20));
+        out.println(hr(20));
 
         for (String token : Tokens.tokens) {
             if (uses(lines, token)) {
-                System.out.println("   " + token.length() + "  |" + token);
+                out.printf(" %3d  |%s\n", token.length(), token);
                 tokensSize += token.length();
             }
         }
 
         for (String token : Tokens.tokens) {
             if (!uses(lines, token)) {
-                System.out.println("   " + 0 + "  |" + token);
+                out.printf(" %3d  |%s\n", 0, token);
             }
         }
 
-        System.out.println(hr(20));
+        out.println(hr(20));
 
-        System.out.println("   " + tokensSize + " == used_tokens.size");
+        out.println("   " + tokensSize + " == used_tokens.size");
 
         int completion_bonus = missingTokens(lines) ? 0 : 50;
 
-        System.out.println("   " + completion_bonus + "  == completion.bonus");
+        out.println("   " + completion_bonus + " == completion.bonus");
     }
 
 // - - - - - - - - - - - - - - - - - - - -
 
-    public void score(String filename) {
-        List<String> lines = readLines(filename);
+    public void score(String filename, PrintStream out) {
+        score(readLines(filename), out);
+
+        // green-traffic light pattern...put it out of sight
+        for (int i = 0; i < 100; i++)
+            out.println();
+        out.print("OK (1 test)");
+    }
+
+    public void score(List<String> lines, PrintStream out) {
         int program_size = linesSize(lines);
         int used_token_bonus = tokensSize(lines);
         int completion_bonus = missingTokens(lines) ? 0 : 50;
 
-        System.out.println(">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus");
-        System.out.println("   " + (-program_size) + " + 3*" + used_token_bonus + " + " + completion_bonus);
-        System.out.println(">>>       = " + (-program_size + (3 * used_token_bonus) + completion_bonus));
+        out.println(">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus");
+        out.println("   " + (-program_size) + " + 3*" + used_token_bonus + " + " + completion_bonus);
+        out.println(">>>       = " + (-program_size + (3 * used_token_bonus) + completion_bonus));
 
-        System.out.println();
-        printTokenBonuses(lines);
-        System.out.println();
-        printProgramSize(lines);
-
-        // green-traffic light pattern...put it out of sight
-        for (int i = 0; i < 100; i++)
-            System.out.println();
-        System.out.print("OK (1 test)");
+        out.println();
+        printTokenBonuses(lines, out);
+        out.println();
+        printProgramSize(lines, out);
     }
 
     public static void main(String[] args) {
-        new Scorer().score(args[0]);
+        new Scorer().score(args[0], System.out);
     }
 
 }
