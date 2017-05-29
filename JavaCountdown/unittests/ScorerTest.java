@@ -77,7 +77,7 @@ public class ScorerTest {
                      "   1  |(\n" +
                      "   0  |protected\n" +
                      "------|--------------------\n" +
-                     "   10 == used_tokens.size\n" +
+                     "  10 == used_tokens.size\n" +
                      "   0 == completion.bonus\n", outputStream.toString());
     }
 
@@ -85,9 +85,9 @@ public class ScorerTest {
     public void scoresShortProgram() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         scorer.score(threeLineProgram, new PrintStream(outputStream));
-        assertEquals(   ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
-                        ">>>       = -14 + 3*5 + 0\n" +
-                        ">>>       = 1\n" +
+        assertEquals(   ">>> Score = -CountDown.java.size + 5*usedTokens.size + completion.bonus\n" +
+                        ">>>       = -14 + 5*5 + 0\n" +
+                        ">>>       = 11\n" +
                         "\n" +
                         "------|--------------------\n" +
                         "   5  |class\n" +
@@ -111,9 +111,9 @@ public class ScorerTest {
     public void scoresMainProgram() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         scorer.score(programWithMain, new PrintStream(outputStream));
-        assertEquals(   ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
-                        ">>>       = -39 + 3*10 + 0\n" +
-                        ">>>       = -9\n" +
+        assertEquals(   ">>> Score = -CountDown.java.size + 5*usedTokens.size + completion.bonus\n" +
+                        ">>>       = -39 + 5*10 + 0\n" +
+                        ">>>       = 11\n" +
                         "\n" +
                         "------|--------------------\n" +
                         "   5  |class\n" +
@@ -121,7 +121,7 @@ public class ScorerTest {
                         "   1  |(\n" +
                         "   0  |protected\n" +
                         "------|--------------------\n" +
-                        "   10 == used_tokens.size\n" +
+                        "  10 == used_tokens.size\n" +
                         "   0 == completion.bonus\n" +
                         "\n" +
                         "------|------------------------------------------------------------\n" +
@@ -138,9 +138,9 @@ public class ScorerTest {
     public void scoreProgramIncludingAllTokens() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         scorer.score(programWithAllTokens, new PrintStream(outputStream));
-        assertEquals(   ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
-                        ">>>       = -27 + 3*19 + 50\n" +
-                        ">>>       = 80\n" +
+        assertEquals(   ">>> Score = -CountDown.java.size + 5*usedTokens.size + completion.bonus\n" +
+                        ">>>       = -27 + 5*19 + 100\n" +
+                        ">>>       = 168\n" +
                         "\n" +
                         "------|--------------------\n" +
                         "   5  |class\n" +
@@ -148,8 +148,8 @@ public class ScorerTest {
                         "   1  |(\n" +
                         "   9  |protected\n" +
                         "------|--------------------\n" +
-                        "   19 == used_tokens.size\n" +
-                        "   50 == completion.bonus\n" +
+                        "  19 == used_tokens.size\n" +
+                        " 100 == completion.bonus\n" +
                         "\n" +
                         "------|------------------------------------------------------------\n" +
                         "   7  |class A {\n" +
