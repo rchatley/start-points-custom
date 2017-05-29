@@ -1,10 +1,12 @@
 public class Tokens {
     public static final String[] tokens = {
-      "thisIsTheEnd",
+      ".",
+      "File",
       "final",
       "finally",
+      "finality",
       "finalize",
-      "\"Good Night\"",
-      "break"
+      "float",
+      "for"
     };
 }

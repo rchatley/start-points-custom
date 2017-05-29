@@ -3,7 +3,7 @@ public class Tokens {
       "@",
       "interface",
       ":",
-      "for",
+      "do",
       "<",
       ">",
       "enum"
