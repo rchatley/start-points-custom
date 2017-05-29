@@ -12,7 +12,7 @@ public class Scorer {
         int size = 0;
         for (int i = 0; i < chars.length; i++) {
             if (!isSpace(chars[i]))
-            size++;
+                size++;
         }
         return size;
     }
@@ -135,11 +135,11 @@ public class Scorer {
 
         out.println(hr(20));
 
-        out.println("   " + tokensSize + " == used_tokens.size");
+        out.printf(" %3d == used_tokens.size\n", tokensSize);
 
-        int completion_bonus = missingTokens(lines) ? 0 : 50;
+        int completion_bonus = missingTokens(lines) ? 0 : 100;
 
-        out.println("   " + completion_bonus + " == completion.bonus");
+        out.printf(" %3d == completion.bonus\n", completion_bonus);
     }
 
 // - - - - - - - - - - - - - - - - - - - -
@@ -156,11 +156,11 @@ public class Scorer {
     public void score(List<String> lines, PrintStream out) {
         int program_size = linesSize(lines);
         int used_token_bonus = tokensSize(lines);
-        int completion_bonus = missingTokens(lines) ? 0 : 50;
+        int completion_bonus = missingTokens(lines) ? 0 : 100;
 
-        out.println(">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus");
-        out.println(">>>       = " + (-program_size) + " + 3*" + used_token_bonus + " + " + completion_bonus);
-        out.println(">>>       = " + (-program_size + (3 * used_token_bonus) + completion_bonus));
+        out.println(">>> Score = -CountDown.java.size + 5*usedTokens.size + completion.bonus");
+        out.println(">>>       = " + (-program_size) + " + 5*" + used_token_bonus + " + " + completion_bonus);
+        out.println(">>>       = " + (-program_size + (5 * used_token_bonus) + completion_bonus));
 
         out.println();
         printTokenBonuses(lines, out);
