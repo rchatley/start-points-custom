@@ -85,8 +85,8 @@ public class ScorerTest {
     public void scoresShortProgram() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         scorer.score(threeLineProgram, new PrintStream(outputStream));
-        assertEquals(  ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
-                        "   -14 + 3*5 + 0\n" +
+        assertEquals(   ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
+                        ">>>       = -14 + 3*5 + 0\n" +
                         ">>>       = 1\n" +
                         "\n" +
                         "------|--------------------\n" +
@@ -112,7 +112,7 @@ public class ScorerTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         scorer.score(programWithMain, new PrintStream(outputStream));
         assertEquals(   ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
-                        "   -39 + 3*10 + 0\n" +
+                        ">>>       = -39 + 3*10 + 0\n" +
                         ">>>       = -9\n" +
                         "\n" +
                         "------|--------------------\n" +
@@ -139,7 +139,7 @@ public class ScorerTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         scorer.score(programWithAllTokens, new PrintStream(outputStream));
         assertEquals(   ">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus\n" +
-                        "   -27 + 3*19 + 50\n" +
+                        ">>>       = -27 + 3*19 + 50\n" +
                         ">>>       = 80\n" +
                         "\n" +
                         "------|--------------------\n" +

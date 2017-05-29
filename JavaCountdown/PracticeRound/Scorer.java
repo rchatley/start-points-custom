@@ -159,7 +159,7 @@ public class Scorer {
         int completion_bonus = missingTokens(lines) ? 0 : 50;
 
         out.println(">>> Score = -CountDown.java.size + 3*usedTokens.size + completion.bonus");
-        out.println("   " + (-program_size) + " + 3*" + used_token_bonus + " + " + completion_bonus);
+        out.println(">>>       = " + (-program_size) + " + 3*" + used_token_bonus + " + " + completion_bonus);
         out.println(">>>       = " + (-program_size + (3 * used_token_bonus) + completion_bonus));
 
         out.println();
