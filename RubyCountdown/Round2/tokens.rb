@@ -1,0 +1,1 @@
+TOKENS = [ '<<', 'self', 'super', 'module', 'require', 'rescue' ]

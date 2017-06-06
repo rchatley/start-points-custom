@@ -1,0 +1,13 @@
+{
+  "visible_filenames": [
+    "countdown.rb",
+    "cyber-dojo.sh",
+    "rules",
+    "scorer.rb",
+    "tokens.rb"
+  ],
+  "display_name": "Ruby Countdown, Practice Round",
+  "image_name": "cyberdojofoundation/ruby_rspec",
+  "filename_extension": ".rb",
+  "tab_size": 4
+}

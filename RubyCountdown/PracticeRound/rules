@@ -1,0 +1,34 @@
+Your task is to write a Ruby program in the file countdown.rb 
+that compiles and uses all of the tokens listed in tokens.rb
+The smaller your program the higher your score.
+The size of the program does not include whitespace
+so please format the code nicely for the reviews.
+
+Each time you press the [test] button cyber-dojo
+  o) sees if countdown.rb is valid Ruby
+  o) tells your your score
+  o) tells you exactly how your score is calculated
+
+
+SCORING
+-------
+score = minus the size of countdown.rb
+for each token you have used in countdown.rb
+  score += 3*token.size 
+if (all tokens used in countdown.rb)
+  score += 50
+
+
+RULES
+-----
+o) You may edit only the file countdown.rb
+o) The size of the program does not include whitespace
+o) The code is not run (so you do not need a main)
+o) The code has to by valid (passing ruby -c) 
+o) The code may have warnings
+o) The code may have extra tokens!
+o) Tokens must be whole tokens
+   eg you cannot use ... for the . operator
+o) Keyword tokens must be keywords
+   eg you cannot use the string "do" for the do keyword
+o) The judges decision is final
