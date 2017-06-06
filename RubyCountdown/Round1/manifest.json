@@ -6,7 +6,7 @@
     "scorer.rb",
     "tokens.rb"
   ],
-  "display_name": "Ruby Countdown, Practice Round",
+  "display_name": "Ruby Countdown, Round 1",
   "image_name": "cyberdojofoundation/ruby_rspec",
   "filename_extension": ".rb",
   "tab_size": 4
