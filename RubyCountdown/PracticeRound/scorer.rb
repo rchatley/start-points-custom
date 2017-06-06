@@ -117,7 +117,7 @@ class Scorer
         used_token_bonus = tokensSize(lines)
         completion_bonus = missingTokens(lines) ? 0 : 50
 
-        puts ">>> Score = -CountDown.java.size + 5*usedTokens.size + completion.bonus"
+        puts ">>> Score = -countdown.rb.size + 5*usedTokens.size + completion.bonus"
         puts ">>>       = " + (-program_size).to_s + " + 5*" + used_token_bonus.to_s + " + " + completion_bonus.to_s
         puts ">>>       = " + (-program_size + (5 * used_token_bonus) + completion_bonus).to_s
 
